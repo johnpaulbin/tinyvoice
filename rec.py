@@ -85,7 +85,7 @@ def train(rank, world_size, data):
   timestamp = int(time.time())
 
   device = f"cuda:{rank}"
-  model = Rec().to(device)
+  model = Rec(expand=5).to(device)
   if world_size > 1:
     model = DDP(model, device_ids=[rank])
 
